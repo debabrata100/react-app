@@ -3,6 +3,24 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+## How to enable css module loader in react
+- $ npm run eject
+- This generates two folders config and scripts
+- open webpack.config.dev.js inside config foler and under style-loader section make the changes as below
+```
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  modules: true,
+                  localIdentName: '[name]__[local]__[hash:base64.5]'
+                },
+              },
+``` 
+- Apply same in webpack.config.prod.js file
+- And you are done with loading of css modules
+
 ## Table of Contents
 
 - [Updating to New Releases](#updating-to-new-releases)
